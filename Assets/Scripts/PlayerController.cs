@@ -7,41 +7,49 @@ public class PlayerController : MonoBehaviour
     public ScoreController scoreController;
     public Animator animator;
     public float movementSpeed;
-    public float jump;
+    public float jumpForce = 20f;
     private Rigidbody2D rb2d;
+    public Transform feet;
+    public LayerMask groundLayer;
   
 
     public void PickUpKey()
     { 
         scoreController.IncreaseScore(10);
     }
-
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+    }
+    private void Update()
+    {
+        if(Input.GetButtonDown("Jump") && isGrounded())
+            {
+                Jump();
+            }
     }
     private void FixedUpdate()
     {
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
-        PlayerMovement(horizontal, vertical);
+        PlayerMovement(horizontal);
         PlayCrouchAnimation();
         PlayJumpAnimation(vertical);
         PlayHorizontalAnimation(horizontal);
         
     }
-    private void PlayerMovement(float horizontal, float vertical)
+    private void PlayerMovement(float horizontal)
     {
         //for horizontal
         Vector3 position = transform.position;
         position.x += horizontal * movementSpeed * Time.deltaTime;
         transform.position = position;
 
-        if (vertical > 0)
-        {
-            rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
-        }
+        //if (vertical > 0)
+        //{
+        //    rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+        //}
     }
     private void PlayCrouchAnimation()
     {
@@ -58,8 +66,21 @@ public class PlayerController : MonoBehaviour
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
-    
+    private void Jump()
+    {
+        Vector2 movement = new Vector2(rb2d.velocity.x, jumpForce);
+        rb2d.velocity = movement;
+    }
+    public bool isGrounded()
+    {
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayer);
 
+        if(groundCheck.gameObject != null)
+        {
+            return true;
+        }
+        return false;
+    }
 
 
 }
