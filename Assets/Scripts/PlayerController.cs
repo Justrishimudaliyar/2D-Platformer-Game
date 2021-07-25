@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayer);
 
-        if(groundCheck.gameObject != null)
+        if(groundCheck != null)
         {
             return true;
         }
