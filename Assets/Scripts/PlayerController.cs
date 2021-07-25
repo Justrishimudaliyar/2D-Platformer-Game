@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,19 +13,24 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     public Transform feet;
     public LayerMask groundLayer;
-  
+    public int Respawn;
 
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(Respawn);
+    }
     public void PickUpKey()
     { 
         scoreController.IncreaseScore(10);
     }
-
     public void KillPlayer()
     {
         //Destroy(gameObject);
         PlayDeathAnimation();
-    }
+        Invoke("Restart", 1.0f);
 
+    }
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -46,8 +52,9 @@ public class PlayerController : MonoBehaviour
         PlayJumpAnimation(vertical);
         PlayHorizontalAnimation(horizontal);
         
-        
-        
+
+
+
     }
     private void PlayerMovement(float horizontal)
     {
@@ -95,6 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+    
 
 
 }
