@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,13 @@ public class PlayerController : MonoBehaviour
     { 
         scoreController.IncreaseScore(10);
     }
+
+    public void KillPlayer()
+    {
+        //Destroy(gameObject);
+        PlayDeathAnimation();
+    }
+
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -37,6 +45,8 @@ public class PlayerController : MonoBehaviour
         PlayCrouchAnimation();
         PlayJumpAnimation(vertical);
         PlayHorizontalAnimation(horizontal);
+        
+        
         
     }
     private void PlayerMovement(float horizontal)
@@ -65,6 +75,10 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
+    }
+    private void PlayDeathAnimation()
+    {
+        animator.SetBool("Die", true);
     }
     private void Jump()
     {
