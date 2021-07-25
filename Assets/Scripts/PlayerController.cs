@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float jump;
     private Rigidbody2D rb2d;
+  
 
-   public void PickUpKey()
+    public void PickUpKey()
     { 
         scoreController.IncreaseScore(10);
     }
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
         if (vertical > 0)
         {
-          rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+            rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
         }
     }
     private void PlayCrouchAnimation()
@@ -57,8 +58,8 @@ public class PlayerController : MonoBehaviour
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
-        
-       
-
     
+
+
+
 }
