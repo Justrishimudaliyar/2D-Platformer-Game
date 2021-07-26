@@ -8,6 +8,7 @@ public class HealthController : MonoBehaviour
     public int health;
     public int noOfHearts;
     public Image[] hearts;
+    public Image[] emptyHearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
