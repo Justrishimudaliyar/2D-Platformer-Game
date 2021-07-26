@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     public Transform feet;
     public LayerMask groundLayer;
+    public HealthController health;
     public int Respawn;
-
 
     public void Restart()
     {
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         //Destroy(gameObject);
         PlayDeathAnimation();
-        Invoke("Restart", 1.0f);
+        Invoke("Restart", 2.0f);
 
     }
     private void Awake()
@@ -102,7 +102,11 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-    
+    public void DamagePlayer()
+    {
+        health.healthReduce();
+    }
+
 
 
 }
