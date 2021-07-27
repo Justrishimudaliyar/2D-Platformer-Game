@@ -41,9 +41,7 @@ public class HealthController : MonoBehaviour
             else
                 hearts[i].enabled = false;
         }
-    }
-
-    
+    } 
     public void healthReduce()
     {
         if (health == 0)
