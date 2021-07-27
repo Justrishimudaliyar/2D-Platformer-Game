@@ -13,6 +13,7 @@ public class HealthController : MonoBehaviour
     public Sprite FullHeart;
     public Sprite EmptyHeart;
     public PlayerController KillPlayer;
+    public PlayerController AnimatorHurt;
 
     void Update()
     {
@@ -54,6 +55,7 @@ public class HealthController : MonoBehaviour
         {
             health = health - 1;
             Debug.Log("Health reduced");
+            AnimatorHurt.PlayHurtAnimation();
         }
             
         

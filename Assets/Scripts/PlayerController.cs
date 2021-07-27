@@ -104,9 +104,18 @@ public class PlayerController : MonoBehaviour
     }
     public void DamagePlayer()
     {
+        
         health.healthReduce();
     }
-
-
+    public void PlayHurtAnimation()
+    {
+        animator.SetBool("Hurt", true);
+        StartCoroutine(Timedelay());
+    }
+    IEnumerator Timedelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Hurt", false);
+    }
 
 }
