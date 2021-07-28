@@ -48,14 +48,11 @@ public class HealthController : MonoBehaviour
         {
             KillPlayer.KillPlayer();
         }
-
         else
         {
             health = health - 1;
             Debug.Log("Health reduced");
             AnimatorHurt.PlayHurtAnimation();
         }
-            
-        
     }
 }   
