@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,11 +13,23 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     public Transform feet;
     public LayerMask groundLayer;
-  
+    public HealthController health;
+    public int Respawn;
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(Respawn);
+    }
     public void PickUpKey()
     { 
         scoreController.IncreaseScore(10);
+    }
+    public void KillPlayer()
+    {
+        //Destroy(gameObject);
+        PlayDeathAnimation();
+        Invoke("Restart", 2.0f);
+
     }
     private void Awake()
     {
@@ -38,6 +52,9 @@ public class PlayerController : MonoBehaviour
         PlayJumpAnimation(vertical);
         PlayHorizontalAnimation(horizontal);
         
+
+
+
     }
     private void PlayerMovement(float horizontal)
     {
@@ -66,6 +83,10 @@ public class PlayerController : MonoBehaviour
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
+    private void PlayDeathAnimation()
+    {
+        animator.SetBool("Die", true);
+    }
     private void Jump()
     {
         Vector2 movement = new Vector2(rb2d.velocity.x, jumpForce);
@@ -81,6 +102,20 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
+    public void DamagePlayer()
+    {
+        
+        health.healthReduce();
+    }
+    public void PlayHurtAnimation()
+    {
+        animator.SetBool("Hurt", true);
+        StartCoroutine(Timedelay());
+    }
+    IEnumerator Timedelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Hurt", false);
+    }
 
 }
