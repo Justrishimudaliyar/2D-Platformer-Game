@@ -15,11 +15,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public HealthController health;
     public int Respawn;
+    public GameOverController gameOverController;
 
-    public void Restart()
-    {
-        SceneManager.LoadScene(Respawn);
-    }
+    
     public void PickUpKey()
     { 
         scoreController.IncreaseScore(10);
@@ -28,8 +26,8 @@ public class PlayerController : MonoBehaviour
     {
         //Destroy(gameObject);
         PlayDeathAnimation();
-        Invoke("Restart", 2.0f);
-
+        gameOverController.PlayerDied();
+        this.enabled = false;
     }
     private void Awake()
     {
