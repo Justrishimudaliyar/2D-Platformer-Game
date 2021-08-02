@@ -7,17 +7,25 @@ using UnityEngine.UI;
 public class GameOverController : MonoBehaviour
 {
     public Button buttonRestart;
+    public Button ExitButton;
     
     private void Awake()
     {
         buttonRestart.onClick.AddListener(Restart);
+        buttonRestart.onClick.AddListener(Exit);
     }
     public void PlayerDied()
     {
-        Invoke("PlayerDied", 2.0f);
+        //Invoke("PlayerDied", 2.0f);
+        SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
         gameObject.SetActive(true);
     }
 
+    public void Exit()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(0);
+    }
     public void Restart()
     {
         

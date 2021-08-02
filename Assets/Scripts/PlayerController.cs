@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    private void MovementSound()
+    {
+        SoundManager.Instance.PlayMusic(Sounds.PlayerMove);
+    }
     private void PlayerMovement(float horizontal)
     {
         //for horizontal
@@ -78,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         Vector3 scale = transform.localScale;
+        
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
