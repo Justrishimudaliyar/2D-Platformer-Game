@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelOverControl : MonoBehaviour
 
 {
-    
+    public LevelCompleteScripts LevelComplete;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
@@ -14,6 +14,7 @@ public class LevelOverControl : MonoBehaviour
         {
             //Debug.Log("Level Complete");
             LevelManager.Instance.MarkCurrentLevelComplete();
+            LevelComplete.LevelCompleted();
         }
     }
 }

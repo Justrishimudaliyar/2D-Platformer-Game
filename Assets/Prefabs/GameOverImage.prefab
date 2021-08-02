@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 4878531335915875955}
   - component: {fileID: 4878531335915875954}
   - component: {fileID: 4878531335915875953}
-  - component: {fileID: 4878531335915875948}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -217,19 +216,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4878531335915875948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4878531335915875959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3cd7729b5c6034f8a991e28cdc74e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelName: Lobby
 --- !u!1 &4878531335960269296
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4878531336083270212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -444,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonRestart: {fileID: 4878531335960269298}
+  ExitButton: {fileID: 4878531335915875953}
 --- !u!1 &4878531336536100295
 GameObject:
   m_ObjectHideFlags: 0

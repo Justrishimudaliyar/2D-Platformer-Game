@@ -14,21 +14,11 @@ public class PlayerController : MonoBehaviour
     public Transform feet;
     public LayerMask groundLayer;
     public HealthController health;
-    public int Respawn;
     public GameOverController gameOverController;
+    public LevelCompleteScripts levelCompleteScript;
 
     
-    public void PickUpKey()
-    { 
-        scoreController.IncreaseScore(10);
-    }
-    public void KillPlayer()
-    {
-        //Destroy(gameObject);
-        PlayDeathAnimation();
-        gameOverController.PlayerDied();
-        this.enabled = false;
-    }
+    
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -42,17 +32,23 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
         PlayerMovement(horizontal);
         PlayCrouchAnimation();
         PlayJumpAnimation(vertical);
         PlayHorizontalAnimation(horizontal);
-        
-
-
-
+    }
+    public void PickUpKey()
+    {
+        scoreController.IncreaseScore(10);
+    }
+    public void KillPlayer()
+    {
+        //Destroy(gameObject);
+        PlayDeathAnimation();
+        gameOverController.PlayerDied();
+        this.enabled = false;
     }
     private void MovementSound()
     {

@@ -8,8 +8,6 @@ public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance;
     public static LevelManager Instance { get { return instance; } }
-
-  
     public string[] Levels;
     private void Awake()
     {
@@ -23,7 +21,6 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Start()
     {
         if(GetLevelStatus(Levels[0]) == LevelStatus.Locked)
@@ -31,7 +28,6 @@ public class LevelManager : MonoBehaviour
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);
         }
     }
-
     public void MarkCurrentLevelComplete()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -39,7 +35,6 @@ public class LevelManager : MonoBehaviour
         //int nextSceneIndex = currentScene.buildIndex + 1;
         //Scene nextScene = SceneManager.GetSceneByBuildIndex(nextSceneIndex);
         //SetLevelStatus(nextScene.name, LevelStatus.Unlocked);
-
         int currentSceneIndex = Array.FindIndex(Levels, level => level == currentScene.name);
         int nextSceneIndex = currentSceneIndex + 1;
         if(nextSceneIndex < Levels.Length)
@@ -52,7 +47,6 @@ public class LevelManager : MonoBehaviour
         LevelStatus levelStatus = (LevelStatus) PlayerPrefs.GetInt(level, 0);
         return levelStatus;
     }
-
     public void SetLevelStatus(string level, LevelStatus levelStatus)
     {
         PlayerPrefs.SetInt(level, (int)levelStatus);

@@ -34,9 +34,6 @@ public class LevelLoader : MonoBehaviour
                 SoundManager.Instance.Play(Sounds.ButtonClick);
                 SceneManager.LoadScene(LevelName);
                 break;
-        }
-
-
-        
+        }   
     }
 }

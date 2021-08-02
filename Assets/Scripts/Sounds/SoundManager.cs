@@ -36,7 +36,6 @@ public class SoundManager : MonoBehaviour
         soundEffect.volume = Volume;
         soundMusic.volume = Volume;
     }
-
     public void Mute(bool status)
     {
         IsMute = status;
@@ -70,7 +69,6 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("Clip not found for sound type: " + sound);
         }
     }
-
     private AudioClip getSoundClip(Sounds sound)
     {
         SoundType item = Array.Find(Sounds, i => i.soundType == sound);
@@ -81,14 +79,12 @@ public class SoundManager : MonoBehaviour
         return null;
     }
 }
-
 [Serializable]
 public class SoundType
 {
     public Sounds soundType;
     public AudioClip soundClip;
 }
-
 public enum Sounds
 {
     ButtonClick,
@@ -96,4 +92,5 @@ public enum Sounds
     Music,
     PlayerDeath,
     EnemyDeath,
+    LevelComplete,
 }

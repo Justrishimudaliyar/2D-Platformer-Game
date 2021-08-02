@@ -1408,6 +1408,8 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: 31b2284e8ab3f244182080ca7da474b7, type: 3}
   - soundType: 1
     soundClip: {fileID: 8300000, guid: 13de3c8b19190eb488622c2982f7e977, type: 3}
+  - soundType: 5
+    soundClip: {fileID: 8300000, guid: c60aefba2270c684da188b1ceb762f31, type: 3}
   IsMute: 0
   Volume: 1
 --- !u!4 &758260245
@@ -2201,7 +2203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPlay: {fileID: 989023649}
-  buttonExit: {fileID: 0}
+  buttonExit: {fileID: 1525930264}
   LevelSelection: {fileID: 165938793}
 --- !u!1 &1144491413
 GameObject:
