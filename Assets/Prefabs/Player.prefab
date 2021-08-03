@@ -205,8 +205,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 246
   health: {fileID: 326996348}
-  Respawn: 1
   gameOverController: {fileID: 0}
+  levelCompleteScript: {fileID: 0}
 --- !u!114 &326996348
 MonoBehaviour:
   m_ObjectHideFlags: 0

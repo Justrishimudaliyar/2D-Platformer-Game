@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded())
             {
                 Jump();
+                MovementSound();
             }
     }
     private void FixedUpdate()
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     }
     private void MovementSound()
     {
-        SoundManager.Instance.PlayMusic(Sounds.PlayerMove);
+        SoundManager.Instance.Play(Sounds.PlayerMove);
     }
     private void PlayerMovement(float horizontal)
     {
