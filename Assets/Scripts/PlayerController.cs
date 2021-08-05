@@ -11,17 +11,21 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float jumpForce = 20f;
     private Rigidbody2D rb2d;
+    private BoxCollider2D rb2dBox;
     public Transform feet;
     public LayerMask groundLayer;
     public HealthController health;
     public GameOverController gameOverController;
     public LevelCompleteScripts levelCompleteScript;
-
-    
-    
+    public DummyScript EnemyControllerObject;
+    private Vector2 lookDir;
+    public float recoilForce;
+    private Vector3 scale;
+   
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        rb2dBox = gameObject.GetComponent<BoxCollider2D>();
     }
     private void Update()
     {
@@ -46,10 +50,9 @@ public class PlayerController : MonoBehaviour
     }
     public void KillPlayer()
     {
-        //Destroy(gameObject);
         PlayDeathAnimation();
-        gameOverController.PlayerDied();
-        this.enabled = false;
+        StartCoroutine(TimeSkip());
+        Destroy(EnemyControllerObject.gameObject, 0.25f);
     }
     private void MovementSound()
     {
@@ -57,15 +60,11 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerMovement(float horizontal)
     {
-        //for horizontal
         Vector3 position = transform.position;
         position.x += horizontal * movementSpeed * Time.deltaTime;
         transform.position = position;
+        lookDir = Camera.main.ScreenToWorldPoint(position);
 
-        //if (vertical > 0)
-        //{
-        //    rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
-        //}
     }
     private void PlayCrouchAnimation()
     {
@@ -78,7 +77,7 @@ public class PlayerController : MonoBehaviour
     private void PlayHorizontalAnimation(float horizontal)
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
-        Vector3 scale = transform.localScale;
+        scale = transform.localScale;
         
         scale.x = (horizontal < 0 ? -1 : (horizontal > 0 ? 1 : scale.x)) * Mathf.Abs(scale.x);
         transform.localScale = scale;
@@ -104,6 +103,15 @@ public class PlayerController : MonoBehaviour
     }
     public void DamagePlayer()
     {
+        scale = transform.localScale;
+        if(scale.x == 1)
+        {
+            rb2d.AddForce(lookDir * recoilForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb2d.AddForce(-lookDir * recoilForce, ForceMode2D.Impulse);
+        }
         
         health.healthReduce();
     }
@@ -116,6 +124,11 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("Hurt", false);
+    }
+    IEnumerator TimeSkip()
+    {
+        yield return new WaitForSeconds(1f);
+        gameOverController.PlayerDied();
     }
 
 }

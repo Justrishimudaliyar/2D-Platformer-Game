@@ -18,9 +18,8 @@ public class GameOverController : MonoBehaviour
     }
     public void PlayerDied()
     {
-        //Invoke("PlayerDied", 2.0f);
         SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
-        gameObject.SetActive(true);
+        gameObject.SetActive(true);   
     }
 
     public void Exit()
@@ -30,9 +29,10 @@ public class GameOverController : MonoBehaviour
     }
     public void Restart()
     {
-        
+        Time.timeScale = 1f;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
+        
     }
 
     

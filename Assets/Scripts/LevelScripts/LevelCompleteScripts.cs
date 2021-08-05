@@ -17,7 +17,7 @@ public class LevelCompleteScripts : MonoBehaviour
     }
     public void LevelCompleted()
     {
-        //Invoke("PlayerDied", 2.0f);
+        
         SoundManager.Instance.PlayMusic(Sounds.LevelComplete);
         gameObject.SetActive(true);
     }

@@ -207,6 +207,7 @@ MonoBehaviour:
   health: {fileID: 326996348}
   gameOverController: {fileID: 0}
   levelCompleteScript: {fileID: 0}
+  recoilForce: 2
 --- !u!114 &326996348
 MonoBehaviour:
   m_ObjectHideFlags: 0
