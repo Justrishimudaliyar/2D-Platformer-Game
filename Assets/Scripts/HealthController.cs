@@ -17,14 +17,10 @@ public class HealthController : MonoBehaviour
 
     void Update()
     {
-
         if (health > noOfHearts)
         {
             health = noOfHearts;
         }
-
-       
-
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
@@ -51,7 +47,6 @@ public class HealthController : MonoBehaviour
         else
         {
             health = health - 1;
-            Debug.Log("Health reduced");
             AnimatorHurt.PlayHurtAnimation();
         }
     }
