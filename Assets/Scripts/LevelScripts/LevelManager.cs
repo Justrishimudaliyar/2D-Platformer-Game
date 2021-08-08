@@ -23,6 +23,11 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
+
+        for (int i = 0; i <Levels.Length ; i++)
+        {
+            SetLevelStatus(Levels[i], LevelStatus.Locked);
+        }
         if(GetLevelStatus(Levels[0]) == LevelStatus.Locked)
         {
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);

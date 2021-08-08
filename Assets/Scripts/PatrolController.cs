@@ -7,7 +7,6 @@ public class PatrolController : MonoBehaviour
     public float speed;
     private bool movingRight = true;
     public Transform groundDetection;
-
     private void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);

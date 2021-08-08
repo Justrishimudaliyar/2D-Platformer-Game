@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         PlayDeathAnimation();
+        SoundManager.Instance.Play(Sounds.PlayerDieSound);
         StartCoroutine(TimeSkip());
         Destroy(EnemyControllerObject.gameObject, 0.25f);
     }

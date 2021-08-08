@@ -3282,6 +3282,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3289,6 +3290,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &519420029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5552,6 +5585,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 263565508, guid: 3684cd8619ed2414f99032513afa0213, type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 326996348, guid: 3684cd8619ed2414f99032513afa0213, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -5576,10 +5613,6 @@ PrefabInstance:
       propertyPath: emptyHearts.Array.data[2]
       value: 
       objectReference: {fileID: 52949352}
-    - target: {fileID: 2043335974, guid: 3684cd8619ed2414f99032513afa0213, type: 3}
-      propertyPath: recoilForce
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2043335974, guid: 3684cd8619ed2414f99032513afa0213, type: 3}
       propertyPath: scoreController
       value: 
@@ -5797,21 +5830,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816409302964112223, guid: cbd69942cc0a8364dbc9be0ec93ab403,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816409302964112223, guid: cbd69942cc0a8364dbc9be0ec93ab403,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816409302964112223, guid: cbd69942cc0a8364dbc9be0ec93ab403,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd69942cc0a8364dbc9be0ec93ab403, type: 3}
@@ -6287,7 +6305,7 @@ PrefabInstance:
     - target: {fileID: 7772201178159056394, guid: 301b0f353b4f9ac41ac9d799aa9fa608,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1589324
+      value: -1.158932
       objectReference: {fileID: 0}
     - target: {fileID: 7772201178159056394, guid: 301b0f353b4f9ac41ac9d799aa9fa608,
         type: 3}

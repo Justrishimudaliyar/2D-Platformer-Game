@@ -93,4 +93,10 @@ public enum Sounds
     PlayerDeath,
     EnemyDeath,
     LevelComplete,
+    PlayerDieSound,
+    MeleeAttack,
+    MeleeGrunt,
+    ChomperDie,
+    KeyPickUp,
+
 }

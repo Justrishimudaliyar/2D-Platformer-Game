@@ -13,8 +13,7 @@ public class GameOverController : MonoBehaviour
     private void Awake()
     {
         buttonRestart.onClick.AddListener(Restart);
-        ExitButton.onClick.AddListener(Exit);
-        
+        ExitButton.onClick.AddListener(Exit);   
     }
     public void PlayerDied()
     {
@@ -29,10 +28,8 @@ public class GameOverController : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale = 1f;
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
-        
+        SceneManager.LoadScene(scene.buildIndex);   
     }
 
     
